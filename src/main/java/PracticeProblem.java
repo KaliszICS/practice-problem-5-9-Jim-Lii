@@ -28,7 +28,7 @@ public class PracticeProblem {
 		return newWord;
 	}
 
-	public static ArrayDeque<String> simulateLine(String[] commands){
+	public static String simulateLine(String[] commands){
 		ArrayDeque<String> line = new ArrayDeque<>();
 		for (int i = 0; i < commands.length; i++){
 			if (commands[i].startsWith("ENQUEUE ")){
@@ -49,7 +49,15 @@ public class PracticeProblem {
 				line.removeLast();
 			}
 		}
-		return line;
+		String newLine = "[";
+		while (!line.isEmpty()){
+			newLine += line.removeFirst();
+			if (!line.isEmpty()){
+				newLine += ", ";
+			}
+		}
+		newLine += "]";
+		return newLine;
 	}
 
 }
